@@ -3,10 +3,33 @@ version: 2
 sources:
   - name: raw
     schema: gz_raw_data
+    description: table source des données de Greenweez
     tables:
       - name: sales
         identifier: raw_gz_sales
+        description: table des ventes de gz
+        tests:
+            - unique:
+                column_name: "(orders_id || '-' || pdt_id)"
+        freshness:
+          warn_after: {count: 90, period: day}
+        loaded_at_field: CAST(date_date as timestamp) as date_date
       - name: product
         identifier: raw_gz_product
+        description: table des produits de gz
+        columns:
+            - name: products_id
+              description: primary key
+              tests:
+                - unique
+
       - name: ship
         identifier: raw_gz_ship
+        description: table des envois de gz
+        columns:
+            - name: orders_id
+              description: primary key
+              tests:
+               - unique
+             
+
