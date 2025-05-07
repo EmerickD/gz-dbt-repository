@@ -2,6 +2,9 @@ WITH operationnal_margin AS (
     SELECT orders_margin.orders_id,
             orders_margin.date_date,
             orders_margin.total_margin,
+            orders_margin.total_quantity,
+            orders_margin.total_revenue,
+            orders_margin.total_purchase_cost,
             ship.ship_cost,
             ship.shipping_fee,
             ship.logcost    
