@@ -33,3 +33,9 @@ sources:
                - unique
              
 
+models:
+  - name: int_sales_margin
+    columns:
+            - name: products_id
+              tests:
+               - unique
